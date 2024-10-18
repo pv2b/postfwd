@@ -1398,8 +1398,8 @@ sub parse_config_line {
 					if ($postfwd_settings{forbid_default_regex}) {
 						log_crit ("Possible accidental use of = at $myfile line $mynum, and --forbid_default_regex is set. Exiting!");
 						end_program();
-					}
-				}
+					};
+				};
 			};
 			unless (exists($myrule{$COMP_ACTION})) {
 				log_warn ("Rule ".$myindex." ($myfile line ".$mynum."): contains no action and will be ignored");
