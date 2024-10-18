@@ -1393,8 +1393,8 @@ sub parse_config_line {
 				} else {
 					push @{$myrule{$mykey}}, prepare_item ($forced_reload, $mycomp, $myvalue);
 				};
-				if (!$postfwd_settings{allow_default_regex} && $mykey !~ /^($COMP_ACTION|$COMP_ID|)$/ && $mycomp eq "=" && !(defined $postfwd_compare{$mykey})) {
-					log_warn ("Rule ".$myindex." ($myfile line ".$mynum."): possible accidental use of = ($myvalue is treated as a regex). If this is correct, use =~ to suppress this warning. If a literal match is intended, use == instead.");
+				if (!$postfwd_settings{allow_default_regex} && $mykey !~ /^($COMP_ACTION|$COMP_ID)$/ && $mycomp eq "=" && !(defined $postfwd_compare{$mykey})) {
+					log_warn ("Rule ".$myindex." ($myfile line ".$mynum."): possible accidental use of = ($myvalue is treated as a regex). If this is correct, use =~ to avoid this warning. If a literal match is intended, use == instead.");
 					if ($postfwd_settings{forbid_default_regex}) {
 						log_crit ("Possible accidental use of = at $myfile line $mynum, and --forbid_default_regex is set. Exiting!");
 						end_program();
