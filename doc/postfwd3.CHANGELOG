@@ -1,3 +1,20 @@
+postfwd3 2.XX
+=============
+- feature: Added warnings for use of = to specify a regex in an item,
+           due to this historical behaviour sometimes causing subtle
+		   misconfigurations, e.g. sender=alice@example.org matching
+		   malice@exampleforged.com.
+
+           If you encounter these warnings, please review your
+		   configuration, change to =~ if a regex match is intended,
+		   or perhaps == for a literal match if appropriate. Note that
+		   =~ does not allow the use of // around its argument, so remove
+		   those if present.
+
+		   These warnings are enabled by default, and can be suppressed
+		   with --allow_default_regex, or turned into fatal errors with
+		   --forbid_default_regex.
+
 postfwd3 2.03
 =============
 - bugfix:  Corrected bug with --delrate command in v1 mode
